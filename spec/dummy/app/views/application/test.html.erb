@@ -1,0 +1,6 @@
+<%= render "part1" %>
+<%= render "part2", :if_missing => {:partial => "part1"} %>
+<%= render :partial =>"part3", :if_missing => false %>
+<%= render "part4", :if_missing => {:text => "missing1"} %>
+<% options = {:partial => "part5", :if_missing => {:text => "missing2"} } %>
+<%= render options, {:test => 1} %>

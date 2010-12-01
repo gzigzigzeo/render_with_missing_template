@@ -1,0 +1,18 @@
+= render_with_missing_template
+
+== Examples:
+
+app/controllers/test_controller.rb
+
+  def index
+    # Renders template layouts/default/index if tests/index is missing
+    render :if_missing => {:template => "layouts/default/index"}
+  end
+  
+app/views/index.html.erb
+  
+  <!-- Renders nothing if "navigation2" is missing --> 
+  <%= render :partial => "navigation2", :if_missing => false %>
+  
+  <!-- Renders template "layouts/defaults/navigation" if "navigation2" is missing -->
+  <%= render :partial => "navigation2", :if_missing => {:template => "layouts/defaults/navigation"} %>  
