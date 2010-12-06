@@ -20,4 +20,7 @@ class ApplicationController < ActionController::Base
   def index4
     render :if_missing => {:template => "notfound"}
   end
+  
+  def nested    
+  end
 end

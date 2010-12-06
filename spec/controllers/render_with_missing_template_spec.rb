@@ -23,4 +23,8 @@ describe ApplicationController do
   it "should raise an error if controller template found && partial not found" do  
     lambda { get :index4 }.should raise_error
   end
+  
+  it "should raise TemplateError if deeply nested template not found" do
+    lambda { get :nested }.should raise_error    
+  end
 end
