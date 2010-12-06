@@ -47,7 +47,7 @@ module RenderWithMissingTemplate
           begin
             render_without_defaults(options, locals, &block)        
           rescue ::ActionView::MissingTemplate => e            
-            unless nested
+            if nested
               raise MissingTemplateContainer.new(e)
             else
               raise e

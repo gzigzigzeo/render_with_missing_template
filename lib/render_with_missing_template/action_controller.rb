@@ -26,7 +26,7 @@ module RenderWithMissingTemplate
             # In fact MissingTemplate in a view should not be caught by controller because controller's template exists, but
             # it have errors inside. :nested option tells nested render to raise MissingTemplateContrainer exception instead of
             # raising MissingTemplate. This exception means that action template is resolved, but some of nested partials are not.
-            render_without_defaults(options.merge(:nested => false))
+            render_without_defaults(options.merge(:nested => true))
           rescue MissingTemplateContainer => e
             unless defaults == false
               render_without_defaults(defaults)
