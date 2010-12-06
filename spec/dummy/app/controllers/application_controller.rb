@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
   def index2
     render :if_missing => false
   end
+  
+  def index3
+    render :partial => "nano", :if_missing => {:template => "notfound"}
+  end
+  
+  def index4
+    render :if_missing => {:template => "notfound"}
+  end
 end

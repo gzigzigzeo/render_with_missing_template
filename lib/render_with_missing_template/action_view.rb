@@ -12,18 +12,19 @@ module RenderWithMissingTemplate
       def render_with_defaults(options = {}, locals = {}, &block)
         if options.is_a?(Hash)
           defaults = options.delete(:if_missing)
+          ac = options.delete(:ac)          
         elsif locals.is_a?(Hash)
           defaults = locals.delete(:if_missing)
+          ac = locals.delete(:ac)          
         end
-        
+
         # Prevents replacing :if_missing => false with empty hash.
-        defaults ||= {} unless defaults == false
-        
-        unless defaults.nil?          
+        unless defaults.nil?
           begin
             render_without_defaults(options, locals, &block)
-          rescue ::ActionView::MissingTemplate 
+          rescue ::ActionView::MissingTemplate
             unless defaults == false
+              defaults ||= {}
               new_options = defaults
               if options.is_a?(Hash)
                 new_options = defaults.reverse_merge(options)
@@ -43,7 +44,15 @@ module RenderWithMissingTemplate
             end
           end
         else
-          render_without_defaults(options, locals, &block)
+          begin
+            render_without_defaults(options, locals, &block)        
+          rescue ::ActionView::MissingTemplate => e            
+            if ac
+              raise MissingTemplateContainer.new(e)
+            else
+              raise e
+            end
+          end
         end
       end        
     end    
