@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    render_with_missing_template (0.0.2)
+    render_with_missing_template (0.0.3)
       rails (>= 3.0.0)
 
 GEM
