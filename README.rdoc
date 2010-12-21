@@ -25,6 +25,12 @@ app/controllers/test_controller.rb
     # Renders template layouts/default/index if tests/index is missing
     render :if_missing => {:template => "layouts/default/index"}
   end
+
+  def index
+    # Renders template layouts/default/index if tests/index is missing inside layout 'nowhere'. Render options are merged with default options.
+    # Not shure that it is good strategy to merge. May be, option is required.
+    render :layout => 'nowhere', :if_missing => {:template => "layouts/default/index"}
+  end
   
 app/views/index.html.erb
   

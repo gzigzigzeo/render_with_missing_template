@@ -29,6 +29,7 @@ module RenderWithMissingTemplate
             render_without_defaults(options.merge(:nested => true))
           rescue MissingTemplateContainer => e
             unless defaults == false
+              defaults = options.merge(defaults)
               render_without_defaults(defaults)
             else
               render_without_defaults(:nothing => true)

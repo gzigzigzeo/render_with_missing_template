@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
   end
   
   def nested    
-  end  
+  end
+  
+  def missing_with_template_and_layout
+    render :content_type => "text/html", :format => :html, :layout => 'iframe', :if_missing => {:template => "iframe/iframe"}    
+  end
 end

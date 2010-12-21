@@ -13,10 +13,10 @@ begin
     gem.summary = "Extends rails render method to accept default template when expected template is missing"
     gem.description = "Extends rails render method to render default template when expected template is missing"
     gem.files =  FileList["[A-Z]*", "lib/**/*"]
-    gem.version = "0.0.3"
+    gem.version = "0.0.4"
     gem.email = "gzigzigzeo@gmail.com"
     gem.authors = ["Victor Sokolov"]
-    gem.homepage = "git://github.com/gzigzigzeo/render_with_missing_template.git"
+    gem.homepage = "http://github.com/gzigzigzeo/render_with_missing_template"
             
     gem.add_dependency "rails", ">= 3.0.0"    
   end

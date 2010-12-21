@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{render_with_missing_template}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Victor Sokolov"]
-  s.date = %q{2010-12-07}
+  s.date = %q{2010-12-21}
   s.description = %q{Extends rails render method to render default template when expected template is missing}
   s.email = %q{gzigzigzeo@gmail.com}
   s.extra_rdoc_files = [
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
      "lib/render_with_missing_template/missing_template_container.rb",
      "lib/render_with_missing_template/railtie.rb"
   ]
-  s.homepage = %q{git://github.com/gzigzigzeo/render_with_missing_template.git}
+  s.homepage = %q{http://github.com/gzigzigzeo/render_with_missing_template}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}

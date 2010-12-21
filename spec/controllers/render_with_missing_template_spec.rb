@@ -25,12 +25,17 @@ describe ApplicationController do
     lambda { get :error_in_regular }.should raise_error
   end
 
-  
   it "should raise error if it raises in nested template" do
     lambda { get :nested }.should raise_error
   end
 
   it "should raise error if it raises in nested missing template" do
     lambda { get :all_missing, :if_missing => {:action => :nested} }.should raise_error
+  end
+
+  it "should raise pass :layout and :format to action controller" do
+    get :missing_with_template_and_layout
+    response.should render_template('iframe/iframe')
+    response.body.should =~ /IFRAME/
   end
 end
