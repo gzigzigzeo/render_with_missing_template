@@ -1,5 +1,11 @@
 = render_with_missing_template
 
+== Installation
+
+Rails 3 only. Add following line to your Gemfile:
+
+  gem 'render_with_missing_template'
+
 == Examples:
 
 app/controllers/test_controller.rb
