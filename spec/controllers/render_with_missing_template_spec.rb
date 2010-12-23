@@ -2,29 +2,40 @@ require 'spec_helper'
 
 describe ApplicationController do
   render_views
+  
   it "should render show action if index template missing" do
-    get :index
+    get :regular_missing
     response.should render_template("show")
   end
   
   it "should not render index action if show template exists" do
-    get :index1
+    get :not_missing
     response.should render_template("show")
   end  
 
   it "should not raise exception if :default => false" do
-    proc { get :index2 }.should_not raise_error
+    proc { get :suspend_missing_error }.should_not raise_error
   end  
   
   it "should raise an error if both default & if_missing templates are not found" do
-    proc { get :index3 }.should raise_error
+    proc { get :all_missing }.should raise_error
   end
-  
+    
   it "should raise an error if controller template found && partial not found" do  
-    lambda { get :index4 }.should raise_error
+    lambda { get :error_in_regular }.should raise_error
   end
-  
-  it "should raise TemplateError if deeply nested template not found" do
-    lambda { get :nested }.should raise_error    
+
+  it "should raise error if it raises in nested template" do
+    lambda { get :nested }.should raise_error
+  end
+
+  it "should raise error if it raises in nested missing template" do
+    lambda { get :all_missing, :if_missing => {:action => :nested} }.should raise_error
+  end
+
+  it "should raise pass :layout and :format to action controller" do
+    get :missing_with_template_and_layout
+    response.should render_template('iframe/iframe')
+    response.body.should =~ /IFRAME/
   end
 end
