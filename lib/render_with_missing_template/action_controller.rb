@@ -6,7 +6,7 @@ module RenderWithMissingTemplate
       alias_method_chain :render, :defaults
     end      
     
-    module InstanceMethods
+#    module InstanceMethods
       # ActionController::render overload is needed because ActionController::render have different
       # signature and accepts different options.      
       def render_with_defaults(*args)
@@ -39,6 +39,6 @@ module RenderWithMissingTemplate
           render_without_defaults options
         end
       end        
-    end    
+#    end    
   end
 end
