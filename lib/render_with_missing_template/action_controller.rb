@@ -10,7 +10,7 @@ module RenderWithMissingTemplate
       # ActionController::render overload is needed because ActionController::render have different
       # signature and accepts different options.      
       def render_with_defaults(*args)
-        options = _normalize_render(*args)
+        options = _normalize_args(*args)
         defaults = options.delete(:if_missing)
         unless defaults.nil?
           begin
