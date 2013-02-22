@@ -6,7 +6,7 @@ module RenderWithMissingTemplate
       alias_method_chain :render, :defaults
     end      
         
-    module InstanceMethods
+#    module InstanceMethods
       RENDER_KEYS = [:partial, :text, :template, :file, :inline]
       
       def render_with_defaults(options = {}, locals = {}, &block)
@@ -55,6 +55,6 @@ module RenderWithMissingTemplate
           end
         end
       end        
-    end    
+#    end    
   end
 end
